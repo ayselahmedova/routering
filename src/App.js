@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+import React from 'react';
+import {BrowserRouter,Routes,Route,Link} from 'react-router-dom'
+import AboutPage from '../src/components/AboutPage';
+import ProjectsPage from '../src/components/ProjectsPage';
+import ContactPage from '../src/components/ContactPage';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Haqqında</Link>
+            </li>
+            <li>
+              <Link to="/projects">İş Nümunələri</Link>
+            </li>
+            <li>
+              <Link to="/contact">Əlaqə Məlumatları</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <hr />
+
+        <main>
+          <Routes>
+              <Route path="/" element={<AboutPage/>}></Route>
+              <Route path="/projects" element={<ProjectsPage/>}></Route>
+              <Route path="/contact" element={<ContactPage/>}></Route>
+          </Routes>
+        </main>
+      </div>
+      </BrowserRouter>
   );
-}
+};
 
 export default App;
